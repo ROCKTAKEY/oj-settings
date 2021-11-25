@@ -1,0 +1,4 @@
+* Install
+  #+BEGIN_SRC shell -n
+    git clone https://github.com/ROCKTAKEY/oj-settings ~/.config/online-judge-tools
+  #+END_SRC
