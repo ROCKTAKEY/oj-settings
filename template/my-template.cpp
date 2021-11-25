@@ -171,8 +171,6 @@ public:
         return pow( a * a % mod, i >> 1, base * ((i & 1) == 0 ? 1 : a) % mod);
     }
 
-    llm operator= (llm m) {l = m.l; return *this;}
-
     llm operator<< (long long i) const {return pow( i);};
     llm operator>> (long long i) const {return pow(-i);}
 
