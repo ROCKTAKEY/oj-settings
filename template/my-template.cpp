@@ -30,6 +30,7 @@
 #include <cctype>
 #include<chrono>
 #include<random>
+#include<variant>
 
 #define for0(i, N)    for (long long i = 0  ; i <  (N); ++i)
 #define for1n(i, N)   for (long long i = 1  ; i <= (N); ++i)
@@ -231,6 +232,25 @@ std::istream &operator>>(std::istream &stream, llm &m){
 
 
 long long constexpr inf = std::numeric_limits<long long>::max();
+
+template<typename Container>
+auto compress(Container container){
+    using ValueType = typename Container::value_type;
+    std::vector<std::pair<ValueType, unsigned long long >> m;
+    unsigned long long counter = 1;
+    std::variant<ValueType, std::false_type> before = false;
+    for(auto &i : container){
+        if (std::holds_alternative<ValueType>(before) && std::get<ValueType>(before) == i) {
+            ++counter;
+        } else {
+            m.push_back({i, counter});
+            counter = 1;
+            before = i;
+        }
+    }
+    m.push_back({*container.rbegin(), counter});
+    return m;
+}
 
 using namespace std;
 
