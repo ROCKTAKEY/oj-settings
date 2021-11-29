@@ -252,6 +252,15 @@ auto compress(Container container){
     return m;
 }
 
+template<typename Container>
+auto summarize(Container container){
+    std::unordered_map<typename Container::value_type, unsigned long long> m;
+    for(auto &i : container){
+        ++m[i];
+    }
+    return m;
+}
+
 using namespace std;
 
 typedef long long ll;
